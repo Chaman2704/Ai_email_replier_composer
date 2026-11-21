@@ -43,11 +43,16 @@ Never commit your real API key. Keep secrets in environment variables or a local
 
 ## VS Code / extension note
 
-This repository is a Java web application, not a packaged VS Code extension or browser extension. To turn it into an extension:
+This repository currently contains the Java/Spring Boot backend and Gemini API integration.
 
-- A **VS Code extension** could call this API from a command or webview.
-- A **browser extension** could send selected email text to this endpoint and display the result.
-- The extension would need its own `package.json`, extension manifest, build process, and GitHub repository folder.
+For a Gmail compose/reply browser extension:
+
+- The browser extension reads the draft or selected email text from Gmail.
+- It sends that text and tone to `POST /api/email/generate`.
+- The generated reply is inserted into the Gmail compose window.
+- The extension needs a browser manifest such as `manifest.json`, extension scripts, and Gmail permissions.
+
+No browser manifest or Gmail content script is currently present in this repository. Those files must be added to the repository for it to be loadable as a Chrome or Edge extension.
 
 ## Test
 
